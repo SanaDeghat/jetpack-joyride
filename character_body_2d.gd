@@ -8,8 +8,7 @@ const JUMP_VELOCITY = -400.0
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") :
+	if Input.is_action_pressed("ui_accept") :
 		print ("flyting weeeeeeeee")
 		velocity.y = JUMP_VELOCITY
 	else:

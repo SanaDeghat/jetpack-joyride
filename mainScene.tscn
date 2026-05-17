@@ -1,13 +1,22 @@
 [gd_scene format=3 uid="uid://b06sk5lckfr65"]
 
 [ext_resource type="Script" uid="uid://bbuoinsct66cl" path="res://character_body_2d.gd" id="1_g4qto"]
+[ext_resource type="Texture2D" uid="uid://b0fpvpbdcd3e4" path="res://background (2).png" id="1_hr5et"]
 [ext_resource type="Texture2D" uid="uid://ddukknn2tkr8p" path="res://icon.svg" id="2_hr5et"]
 
 [node name="Node2D" type="Node2D" unique_id=1058356665]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=2015609975]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground" unique_id=1910329956]
+offset_right = 1926.0
+offset_bottom = 1083.0
+texture = ExtResource("1_hr5et")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1518095123]
 position = Vector2(206, 566)
 script = ExtResource("1_g4qto")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1945903261]
+scale = Vector2(0.66, 0.66)
 texture = ExtResource("2_hr5et")

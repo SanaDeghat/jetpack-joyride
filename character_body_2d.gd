@@ -9,10 +9,13 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 
 	if Input.is_action_pressed("ui_accept") :
-		print ("flyting weeeeeeeee")
 		velocity.y = JUMP_VELOCITY
-	else:
+	elif position.y<600:
+		print (position.y)
+
 		velocity += get_gravity() * delta
+	else: 
+		velocity.y=0
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")

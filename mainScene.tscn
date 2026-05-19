@@ -4,11 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b0fpvpbdcd3e4" path="res://background (2).png" id="1_hr5et"]
 [ext_resource type="Texture2D" uid="uid://ddukknn2tkr8p" path="res://icon.svg" id="2_hr5et"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr5et"]
-size = Vector2(1298, 19)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61od6"]
-size = Vector2(83, 84)
+size = Vector2(68, 73)
 
 [node name="Node2D" type="Node2D" unique_id=1058356665]
 
@@ -22,22 +19,16 @@ offset_right = 1926.0
 offset_bottom = 1083.0
 texture = ExtResource("1_hr5et")
 
-[node name="roof" type="Area2D" parent="Parallax2D" unique_id=2053566104]
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D/roof" unique_id=577865193]
-position = Vector2(661, 279)
-shape = SubResource("RectangleShape2D_hr5et")
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1518095123]
-position = Vector2(210, 279)
+position = Vector2(206, 566)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_g4qto")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1945903261]
-position = Vector2(2.9999998, -95.99999)
 scale = Vector2(0.66, 0.66)
 texture = ExtResource("2_hr5et")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=132834216]
-position = Vector2(2, -96)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_61od6")

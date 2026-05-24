@@ -1,23 +1,30 @@
 [gd_scene format=3 uid="uid://b06sk5lckfr65"]
 
+[ext_resource type="Script" uid="uid://c8cjgwq06k4iy" path="res://main_scene.gd" id="1_61od6"]
 [ext_resource type="Script" uid="uid://bbuoinsct66cl" path="res://character_body_2d.gd" id="1_g4qto"]
 [ext_resource type="Texture2D" uid="uid://b0fpvpbdcd3e4" path="res://background (2).png" id="1_hr5et"]
 [ext_resource type="Texture2D" uid="uid://ddukknn2tkr8p" path="res://icon.svg" id="2_hr5et"]
+[ext_resource type="Script" uid="uid://ddw2hh1owdrup" path="res://obsticle_spawner.gd" id="5_2qqqv"]
+[ext_resource type="PackedScene" uid="uid://vvviiqxh68vp" path="res://staticOsticle.tscn" id="6_we1jl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61od6"]
 size = Vector2(68, 73)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2qqqv"]
+
 [node name="Node2D" type="Node2D" unique_id=1058356665]
+script = ExtResource("1_61od6")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=421721611]
-repeat_size = Vector2(1300, 0)
-autoscroll = Vector2(-500, 0)
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-600, 0)
 repeat_times = 2
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=1910329956]
-offset_right = 1926.0
-offset_bottom = 1083.0
+offset_right = 1152.0
+offset_bottom = 648.0
 texture = ExtResource("1_hr5et")
+expand_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1518095123]
 position = Vector2(206, 566)
@@ -32,3 +39,76 @@ texture = ExtResource("2_hr5et")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=132834216]
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_61od6")
+
+[node name="Label" type="Label" parent="." unique_id=1031648831]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0000000"
+
+[node name="Timer" type="Timer" parent="." unique_id=1375024688]
+process_callback = 0
+wait_time = 0.15
+autostart = true
+
+[node name="obsticle_spawner" type="Node" parent="." unique_id=295484773]
+script = ExtResource("5_2qqqv")
+obstacle_scene = ExtResource("6_we1jl")
+
+[node name="StaticBody2D" parent="obsticle_spawner" unique_id=1314106614 instance=ExtResource("6_we1jl")]
+
+[node name="onsticleTimer" type="Timer" parent="obsticle_spawner" unique_id=1315491226]
+wait_time = 1.2
+autostart = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=468189637]
+visible = false
+offset_left = 95.0
+offset_top = 69.0
+offset_right = 1025.0
+offset_bottom = 570.0
+texture = SubResource("PlaceholderTexture2D_2qqqv")
+
+[node name="lost" type="Label" parent="TextureRect" unique_id=955422902]
+layout_mode = 0
+offset_right = 914.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 100
+text = "YPU LOST"
+
+[node name="scores" type="Label" parent="TextureRect/lost" unique_id=1409815164]
+layout_mode = 0
+offset_top = 117.0
+offset_right = 564.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 50
+text = "Your score:
+High score:"
+
+[node name="YourScore" type="Label" parent="TextureRect/lost/scores" unique_id=142045695]
+layout_mode = 0
+offset_left = 285.0
+offset_top = -1.0
+offset_right = 353.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="highScore" type="Label" parent="TextureRect/lost/scores" unique_id=976064329]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 72.0
+offset_right = 471.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Restart" type="Button" parent="TextureRect" unique_id=811361673]
+layout_mode = 0
+offset_top = 278.0
+offset_right = 571.0
+offset_bottom = 429.0
+text = "RESTART"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="impact" from="obsticle_spawner/StaticBody2D" to="." method="_on_static_body_2d_impact"]
+[connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]

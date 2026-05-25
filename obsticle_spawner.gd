@@ -2,18 +2,20 @@ extends Node
 
 @export var obstacle_static: PackedScene
 @export var obstacle_rotatice: PackedScene
-@export var spawn_rate := 1.3
+@export var spawn_rate = 1.3
 @onready var onsticle_timer: Timer = $onsticleTimer
 @onready var parallax_2d: Parallax2D = $"../Parallax2D"
 @onready var lose_screen: CanvasLayer = $"../CanvasLayer"
 
 func _ready():
+	
 	onsticle_timer.wait_time = spawn_rate
 	onsticle_timer.start()
 
 
 
 func spawn_obstacle():
+	onsticle_timer.wait_time = randf_range(0.2,2)
 	var scenes = [
 	obstacle_static,
 	obstacle_static,
@@ -24,6 +26,7 @@ func spawn_obstacle():
 	obstacle.global_position.x = 1400
 	obstacle.global_position.y = randf_range(50, 550)
 	obstacle.impact.connect(_on_obstacle_impact)
+	
 
 	add_child(obstacle)
 func _on_obstacle_impact():
@@ -39,4 +42,11 @@ func _on_onsticle_timer_timeout() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().change_scene_to_file("res://mainScene.tscn")
+	global.speed=400
 	global.gameRnning=true
+func _process(delta: float) -> void:
+	if global.gameRnning:
+		global.speed+=0.5
+		parallax_2d.autoscroll.x=-global.speed
+	
+	

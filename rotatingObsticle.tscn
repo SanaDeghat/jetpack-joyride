@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we1jl"]
 size = Vector2(52, 209)
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1314106614]
+[node name="RotatingBody2D" type="StaticBody2D" unique_id=1314106614]
 rotation = -6.2831855
 script = ExtResource("1_wm4dx")
 

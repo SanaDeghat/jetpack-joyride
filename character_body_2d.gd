@@ -2,9 +2,8 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 const roof_y=50;
-var lives = 3
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -25,5 +24,3 @@ func _physics_process(delta: float) -> void:
 		if position.y < roof_y:
 			position.y = roof_y
 			velocity.y = 0
-func deductlife ():
-	lives-=1

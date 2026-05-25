@@ -1,14 +1,13 @@
 extends StaticBody2D
 
-@export var speed := 600.0
-@export var rotation_speed := 5.0
+@export var rotation_speed := 3.0
 
 signal impact
 
 func _process(delta):
 	
 	if global.gameRnning:
-		global_position.x -= speed * delta
+		global_position.x -= global.speed * delta
 		rotation += rotation_speed * delta
 	
 	if global_position.x < -100:

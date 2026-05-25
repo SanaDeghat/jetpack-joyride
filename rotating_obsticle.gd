@@ -6,8 +6,9 @@ extends StaticBody2D
 signal impact
 
 func _process(delta):
-	global_position.x -= speed * delta
+	
 	if global.gameRnning:
+		global_position.x -= speed * delta
 		rotation += rotation_speed * delta
 	
 	if global_position.x < -100:

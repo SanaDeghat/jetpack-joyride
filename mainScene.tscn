@@ -60,22 +60,26 @@ obstacle_rotatice = ExtResource("6_bnlnp")
 wait_time = 1.2
 autostart = true
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=468189637]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=40391904]
+layer = 2
 visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=468189637]
+visibility_layer = 16
 offset_left = 95.0
 offset_top = 69.0
 offset_right = 1025.0
 offset_bottom = 570.0
 texture = SubResource("PlaceholderTexture2D_2qqqv")
 
-[node name="lost" type="Label" parent="TextureRect" unique_id=955422902]
+[node name="lost" type="Label" parent="CanvasLayer/TextureRect" unique_id=955422902]
 layout_mode = 0
 offset_right = 914.0
 offset_bottom = 207.0
 theme_override_font_sizes/font_size = 100
 text = "YPU LOST"
 
-[node name="scores" type="Label" parent="TextureRect/lost" unique_id=1409815164]
+[node name="scores" type="Label" parent="CanvasLayer/TextureRect/lost" unique_id=1409815164]
 layout_mode = 0
 offset_top = 117.0
 offset_right = 564.0
@@ -84,7 +88,7 @@ theme_override_font_sizes/font_size = 50
 text = "Your score:
 High score:"
 
-[node name="YourScore" type="Label" parent="TextureRect/lost/scores" unique_id=142045695]
+[node name="YourScore" type="Label" parent="CanvasLayer/TextureRect/lost/scores" unique_id=142045695]
 layout_mode = 0
 offset_left = 285.0
 offset_top = -1.0
@@ -93,7 +97,7 @@ offset_bottom = 68.0
 theme_override_font_sizes/font_size = 50
 text = "0"
 
-[node name="highScore" type="Label" parent="TextureRect/lost/scores" unique_id=976064329]
+[node name="highScore" type="Label" parent="CanvasLayer/TextureRect/lost/scores" unique_id=976064329]
 layout_mode = 0
 offset_left = 288.0
 offset_top = 72.0
@@ -102,7 +106,7 @@ offset_bottom = 141.0
 theme_override_font_sizes/font_size = 50
 text = "0"
 
-[node name="Restart" type="Button" parent="TextureRect" unique_id=811361673]
+[node name="Restart" type="Button" parent="CanvasLayer/TextureRect" unique_id=811361673]
 layout_mode = 0
 offset_top = 278.0
 offset_right = 571.0
@@ -111,3 +115,4 @@ text = "RESTART"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/TextureRect/Restart" to="obsticle_spawner" method="_on_restart_pressed"]

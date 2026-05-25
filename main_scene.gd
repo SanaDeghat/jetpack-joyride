@@ -3,8 +3,9 @@ var score=0
 @onready var label: Label = $Label
 @onready var timer: Timer = $Timer
 @onready var lose_screen: TextureRect = $TextureRect
-
+@onready var parallax_2d: Parallax2D = $Parallax2D
 
 func _on_timer_timeout() -> void:
-	score += 1
-	label.text = str(score)
+	if global.gameRnning:
+		score += 1
+		label.text = str(score)

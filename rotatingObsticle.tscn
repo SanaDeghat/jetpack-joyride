@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://hhfgldtrqmlg"]
+
+[ext_resource type="Script" uid="uid://lbbpeqmdmev5" path="res://rotating_obsticle.gd" id="1_wm4dx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2qqqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we1jl"]
+size = Vector2(52, 209)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1314106614]
+rotation = -6.2831855
+script = ExtResource("1_wm4dx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1067446494]
+offset_left = -10.296581
+offset_top = -109.00001
+offset_right = 8.261463
+offset_bottom = 107.99999
+texture = SubResource("PlaceholderTexture2D_2qqqv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=506033988]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964509746]
+shape = SubResource("RectangleShape2D_we1jl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

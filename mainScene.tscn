@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b0fpvpbdcd3e4" path="res://background (2).png" id="1_hr5et"]
 [ext_resource type="Texture2D" uid="uid://ddukknn2tkr8p" path="res://icon.svg" id="2_hr5et"]
 [ext_resource type="Script" uid="uid://ddw2hh1owdrup" path="res://obsticle_spawner.gd" id="5_2qqqv"]
+[ext_resource type="PackedScene" uid="uid://hhfgldtrqmlg" path="res://rotatingObsticle.tscn" id="6_bnlnp"]
 [ext_resource type="PackedScene" uid="uid://vvviiqxh68vp" path="res://staticOsticle.tscn" id="6_we1jl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61od6"]
@@ -52,9 +53,8 @@ autostart = true
 
 [node name="obsticle_spawner" type="Node" parent="." unique_id=295484773]
 script = ExtResource("5_2qqqv")
-obstacle_scene = ExtResource("6_we1jl")
-
-[node name="StaticBody2D" parent="obsticle_spawner" unique_id=1314106614 instance=ExtResource("6_we1jl")]
+obstacle_static = ExtResource("6_we1jl")
+obstacle_rotatice = ExtResource("6_bnlnp")
 
 [node name="onsticleTimer" type="Timer" parent="obsticle_spawner" unique_id=1315491226]
 wait_time = 1.2
@@ -110,5 +110,4 @@ offset_bottom = 429.0
 text = "RESTART"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="impact" from="obsticle_spawner/StaticBody2D" to="." method="_on_static_body_2d_impact"]
 [connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]

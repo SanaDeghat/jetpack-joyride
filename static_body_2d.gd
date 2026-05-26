@@ -1,6 +1,8 @@
 extends StaticBody2D
 
 signal impact
+
+
 func _process(delta):
 	if global.gameRnning:
 		global_position.x -= global.speed * delta

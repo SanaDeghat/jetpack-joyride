@@ -1,14 +1,12 @@
 extends StaticBody2D
 
-@export var rotation_speed := 2.0
+
 
 signal impact
-
 func _process(delta):
 	
 	if global.gameRnning:
-		global_position.x -= global.speed * delta
-		rotation += rotation_speed * delta
+		global_position.x -= (global.speed+500) * delta
 	
 	if global_position.x < -100:
 		queue_free()

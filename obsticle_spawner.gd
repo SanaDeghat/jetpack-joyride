@@ -2,10 +2,12 @@ extends Node
 
 @export var obstacle_static: PackedScene
 @export var obstacle_rotatice: PackedScene
+@export var obstacle_moving: PackedScene
 @export var spawn_rate = 1.3
 @onready var onsticle_timer: Timer = $onsticleTimer
 @onready var parallax_2d: Parallax2D = $"../Parallax2D"
 @onready var lose_screen: CanvasLayer = $"../CanvasLayer"
+@onready var character_body_2d: CharacterBody2D = $"../CharacterBody2D"
 
 func _ready():
 	
@@ -19,12 +21,17 @@ func spawn_obstacle():
 	var scenes = [
 	obstacle_static,
 	obstacle_static,
-	obstacle_rotatice
+	obstacle_rotatice,
+	obstacle_moving
 	]	
 	var obstacle = scenes.pick_random().instantiate()
 	obstacle.add_to_group("obstacles")
 	obstacle.global_position.x = 1400
-	obstacle.global_position.y = randf_range(50, 550)
+	if obstacle==obstacle_static or obstacle==obstacle_rotatice:
+		obstacle.rotation=randf_range(0,360)
+		obstacle.global_position.y = randf_range(50, 600)
+	else:
+		obstacle.global_position.y =character_body_2d.global_position.y 
 	obstacle.impact.connect(_on_obstacle_impact)
 	
 
@@ -46,7 +53,7 @@ func _on_restart_pressed() -> void:
 	global.gameRnning=true
 func _process(delta: float) -> void:
 	if global.gameRnning:
-		global.speed+=0.5
+		global.speed+=0.1
 		parallax_2d.autoscroll.x=-global.speed
 	
 	

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ddw2hh1owdrup" path="res://obsticle_spawner.gd" id="5_2qqqv"]
 [ext_resource type="PackedScene" uid="uid://hhfgldtrqmlg" path="res://rotatingObsticle.tscn" id="6_bnlnp"]
 [ext_resource type="PackedScene" uid="uid://vvviiqxh68vp" path="res://staticOsticle.tscn" id="6_we1jl"]
+[ext_resource type="PackedScene" uid="uid://cmy3bk521unun" path="res://moving_obsticle.tscn" id="8_bnlnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61od6"]
 size = Vector2(68, 73)
@@ -33,12 +34,24 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_g4qto")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D" unique_id=277695437]
+emitting = false
+amount = 160
+randomness = 1.0
+lifetime_randomness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+initial_velocity_max = 59.41
+linear_accel_min = 6.93
+linear_accel_max = 51.48
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1945903261]
 scale = Vector2(0.66, 0.66)
 texture = ExtResource("2_hr5et")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=132834216]
-position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_61od6")
 
 [node name="Label" type="Label" parent="." unique_id=1031648831]
@@ -55,6 +68,7 @@ autostart = true
 script = ExtResource("5_2qqqv")
 obstacle_static = ExtResource("6_we1jl")
 obstacle_rotatice = ExtResource("6_bnlnp")
+obstacle_moving = ExtResource("8_bnlnp")
 
 [node name="onsticleTimer" type="Timer" parent="obsticle_spawner" unique_id=1315491226]
 wait_time = 1.2
@@ -112,6 +126,10 @@ offset_top = 278.0
 offset_right = 571.0
 offset_bottom = 429.0
 text = "RESTART"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=529779237]
+position = Vector2(577, 324)
+zoom = Vector2(0.42, 0.42)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]

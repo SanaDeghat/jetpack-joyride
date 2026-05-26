@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hhfgldtrqmlg" path="res://rotatingObsticle.tscn" id="6_bnlnp"]
 [ext_resource type="PackedScene" uid="uid://vvviiqxh68vp" path="res://staticOsticle.tscn" id="6_we1jl"]
 [ext_resource type="PackedScene" uid="uid://cmy3bk521unun" path="res://moving_obsticle.tscn" id="8_bnlnp"]
+[ext_resource type="Script" uid="uid://lvjkksw6dqgs" path="res://pause_menu.gd" id="9_vuu3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61od6"]
 size = Vector2(68, 73)
@@ -57,7 +58,7 @@ shape = SubResource("RectangleShape2D_61od6")
 [node name="Label" type="Label" parent="." unique_id=1031648831]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "0000000"
+text = "0"
 
 [node name="Timer" type="Timer" parent="." unique_id=1375024688]
 process_callback = 0
@@ -127,10 +128,45 @@ offset_right = 571.0
 offset_bottom = 429.0
 text = "RESTART"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=529779237]
-position = Vector2(577, 324)
-zoom = Vector2(0.42, 0.42)
+[node name="pauseMenu" type="CanvasLayer" parent="." unique_id=721238769]
+process_mode = 3
+visible = false
+script = ExtResource("9_vuu3o")
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu" unique_id=1802788033]
+visibility_layer = 16
+offset_left = 378.0
+offset_top = 69.0
+offset_right = 912.0
+offset_bottom = 503.0
+texture = SubResource("PlaceholderTexture2D_2qqqv")
+
+[node name="lost" type="Label" parent="pauseMenu/TextureRect" unique_id=2076444688]
+layout_mode = 0
+offset_top = -5.0
+offset_right = 699.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 100
+text = "GAME PAUSED"
+
+[node name="resume" type="Button" parent="pauseMenu/TextureRect" unique_id=1110672771]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 181.0
+offset_right = 522.0
+offset_bottom = 255.0
+text = "GO BACK"
+
+[node name="Restart" type="Button" parent="pauseMenu/TextureRect" unique_id=1759404126]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 256.0
+offset_right = 527.0
+offset_bottom = 334.0
+text = "RESTART"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/TextureRect/Restart" to="obsticle_spawner" method="_on_restart_pressed"]
+[connection signal="pressed" from="pauseMenu/TextureRect/resume" to="pauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="pauseMenu/TextureRect/Restart" to="pauseMenu" method="_on_restart_pressed"]

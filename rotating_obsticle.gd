@@ -1,4 +1,5 @@
 extends StaticBody2D
+var id=1;
 
 @export var rotation_speed := 2.0
 

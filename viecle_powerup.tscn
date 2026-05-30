@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dxitxmjkbtkjp"]
+
+[ext_resource type="Script" uid="uid://bj7lnha2a3yg" path="res://viecle_powerup.gd" id="1_hd2gu"]
+[ext_resource type="Texture2D" uid="uid://5qwri8sah70l" path="res://blue-circle.webp" id="1_ybpt8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hd2gu"]
+radius = 20.0
+
+[node name="powerup" type="StaticBody2D" unique_id=1314106614]
+rotation = -6.2831855
+script = ExtResource("1_hd2gu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=134351598]
+position = Vector2(-1.7484554e-07, 1)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_ybpt8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=506033988]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964509746]
+shape = SubResource("CircleShape2D_hd2gu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,16 +1,16 @@
 extends StaticBody2D
-var id=2;
+var id=1;
+
+
 
 signal impact
-
-
 func _process(delta):
+	
 	if global.gameRnning:
-		global_position.x -= global.speed * delta
+		global_position.x -= (global.speed+500) * delta
 	
 	if global_position.x < -100:
 		queue_free()
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	impact.emit()

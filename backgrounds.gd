@@ -5,6 +5,7 @@ extends Node2D
 @onready var texture_rect4: TextureRect = $Parallax2D3/TextureRect
 @onready var texture_rect2: TextureRect = $TextureRect2
 @onready var texture_rect5: TextureRect = $Parallax2D4/TextureRect
+@onready var sea_texture: TextureRect = $"../TextureRect"
 
 
 @onready var parallax_2d: Parallax2D = $Parallax2D
@@ -25,6 +26,7 @@ func _ready() -> void:
 		texture_rect5.texture= load("res://backgrounds/"+str(bgNum)+"/5.png")
 	else:
 		texture_rect5.texture=null;
+	sea_texture.texture= load("res://backgrounds/"+str(bgNum)+"/sea.png")
 
 func set_pace(value1: float,value2: float,value3: float):
 	parallax_2d.autoscroll.x=value1

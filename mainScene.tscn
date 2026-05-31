@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://blpn31civelwo" path="res://Sprite-0002-Sheet.png" id="15_466gm"]
 [ext_resource type="Texture2D" uid="uid://c73nt311c0637" path="res://Sprite-0001-Sheet.png" id="16_auxaw"]
 [ext_resource type="Script" uid="uid://bxe2c7qq3eimo" path="res://camera_2d.gd" id="17_auxaw"]
+[ext_resource type="Texture2D" uid="uid://0lfrxhqs5c53" path="res://backgrounds/3/sea.png" id="19_smdy7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efo4c"]
 atlas = ExtResource("15_466gm")
@@ -297,9 +298,20 @@ autoscroll = Vector2(-400, 0)
 repeat_times = 2
 
 [node name="TextureRect" type="TextureRect" parent="backgrounds/Parallax2D4" unique_id=197580320]
-offset_right = 1152.0
-offset_bottom = 689.0
+offset_left = -1.0
+offset_top = -35.0
+offset_right = 1151.0
+offset_bottom = 654.0
 texture = ExtResource("6_auxaw")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=457833277]
+z_index = 2
+offset_left = 1.0
+offset_top = 181.0
+offset_right = 1153.0
+offset_bottom = 829.0
+texture = ExtResource("19_smdy7")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=1031648831]
@@ -378,6 +390,7 @@ shape = SubResource("RectangleShape2D_61od6")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1675707390]
 ignore_rotation = false
+enabled = false
 zoom = Vector2(3, 3)
 script = ExtResource("17_auxaw")
 
@@ -470,6 +483,9 @@ offset_top = 256.0
 offset_right = 527.0
 offset_bottom = 334.0
 text = "RESTART"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=316629091]
+zoom = Vector2(0.42, 0.42)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]

@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bwustrouia55"]
+
+[ext_resource type="Texture2D" uid="uid://bgevswnipk5i5" path="res://background/deathScreen/1.png" id="1_ml5a0"]
+[ext_resource type="Script" uid="uid://govimjimh0t" path="res://death_screen.gd" id="1_uhhpk"]
+[ext_resource type="Texture2D" uid="uid://oyfcetyxmk0l" path="res://background/deathScreen/8.png" id="2_uhhpk"]
+[ext_resource type="Texture2D" uid="uid://ctcrk6tidw8ia" path="res://background/deathScreen/9.png" id="3_417ne"]
+[ext_resource type="Texture2D" uid="uid://br0esmrpthuvk" path="res://background/deathScreen/10.png" id="4_tkjqq"]
+[ext_resource type="Texture2D" uid="uid://dqkki33u3mrxm" path="res://background/deathScreen/11.png" id="5_ol57q"]
+[ext_resource type="Texture2D" uid="uid://b7bpm1cokn80x" path="res://background/deathScreen/12.png" id="6_pboiy"]
+[ext_resource type="Texture2D" uid="uid://ct0lj0exmby3j" path="res://background/deathScreen/13.png" id="7_enuak"]
+[ext_resource type="Texture2D" uid="uid://pls3dv67yitn" path="res://background/deathScreen/14.png" id="8_or0q7"]
+[ext_resource type="Texture2D" uid="uid://c1fvu3wreildk" path="res://background/deathScreen/15.png" id="9_uhs35"]
+[ext_resource type="Texture2D" uid="uid://b32iau10u6hdw" path="res://background/deathScreen/2.png" id="10_1tmu8"]
+[ext_resource type="Texture2D" uid="uid://bmu2841jtd5go" path="res://background/deathScreen/3.png" id="11_5i3j6"]
+[ext_resource type="Texture2D" uid="uid://cu2owcoo3rll7" path="res://background/deathScreen/4.png" id="12_amy8k"]
+[ext_resource type="Texture2D" uid="uid://dvlk4ja3n0dn" path="res://background/deathScreen/5.png" id="13_gbb5a"]
+[ext_resource type="FontFile" uid="uid://bo4clhh8cutdw" path="res://background/1/SpecialElite-Regular.ttf" id="14_417ne"]
+[ext_resource type="Texture2D" uid="uid://cj0348y8j8yt1" path="res://background/deathScreen/6.png" id="14_gk4b0"]
+[ext_resource type="Texture2D" uid="uid://ddnwlimreu4d1" path="res://background/deathScreen/7.png" id="15_20l77"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ol57q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pboiy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enuak"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_or0q7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhs35"]
+
+[sub_resource type="Theme" id="Theme_1tmu8"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 37
+Button/fonts/font = ExtResource("14_417ne")
+Button/styles/disabled = SubResource("StyleBoxEmpty_ol57q")
+Button/styles/focus = SubResource("StyleBoxEmpty_pboiy")
+Button/styles/hover = SubResource("StyleBoxEmpty_enuak")
+Button/styles/normal = SubResource("StyleBoxEmpty_or0q7")
+Button/styles/pressed = SubResource("StyleBoxEmpty_uhs35")
+
+[node name="deathScreen" type="Node2D" unique_id=1025744235]
+texture_filter = 2
+position = Vector2(574, 327)
+scale = Vector2(1.05, 1.05)
+script = ExtResource("1_uhhpk")
+
+[node name="1" type="Sprite2D" parent="." unique_id=951692541]
+visible = false
+texture = ExtResource("1_ml5a0")
+
+[node name="8" type="Sprite2D" parent="." unique_id=439884513]
+position = Vector2(-2593, 5)
+texture = ExtResource("2_uhhpk")
+
+[node name="9" type="Sprite2D" parent="." unique_id=2007323302]
+position = Vector2(2, 635)
+texture = ExtResource("3_417ne")
+
+[node name="10" type="Sprite2D" parent="." unique_id=2075248396]
+position = Vector2(0, -1115)
+texture = ExtResource("4_tkjqq")
+
+[node name="11" type="Sprite2D" parent="." unique_id=1929421243]
+position = Vector2(3, -1967)
+texture = ExtResource("5_ol57q")
+
+[node name="12" type="Sprite2D" parent="." unique_id=812576052]
+position = Vector2(-499, -357)
+texture = ExtResource("6_pboiy")
+
+[node name="13" type="Sprite2D" parent="." unique_id=418597366]
+position = Vector2(534, -7)
+texture = ExtResource("7_enuak")
+
+[node name="14" type="Sprite2D" parent="." unique_id=1722551482]
+position = Vector2(-1081, 10)
+texture = ExtResource("8_or0q7")
+
+[node name="15" type="Sprite2D" parent="." unique_id=1217179621]
+position = Vector2(-5, -144)
+texture = ExtResource("9_uhs35")
+
+[node name="2" type="Sprite2D" parent="." unique_id=184395972]
+position = Vector2(1931.4524, 23)
+scale = Vector2(0.95564663, 1)
+texture = ExtResource("10_1tmu8")
+
+[node name="Button" type="Button" parent="2" unique_id=1145398370]
+offset_left = 302.0
+offset_top = 202.0
+offset_right = 591.0
+offset_bottom = 298.0
+theme = SubResource("Theme_1tmu8")
+text = "Restart"
+
+[node name="3" type="Sprite2D" parent="." unique_id=1289068297]
+position = Vector2(1343.5715, -5)
+scale = Vector2(0.9610616, 1)
+texture = ExtResource("11_5i3j6")
+
+[node name="Button" type="Button" parent="3" unique_id=129060000]
+offset_left = 296.68912
+offset_top = 117.222404
+offset_right = 614.07117
+offset_bottom = 212.18207
+rotation = -0.06632251
+theme = SubResource("Theme_1tmu8")
+text = "Main Menu"
+
+[node name="4" type="Sprite2D" parent="." unique_id=1398292267]
+position = Vector2(-3303.1191, -12.690462)
+scale = Vector2(0.95854044, 0.9365775)
+texture = ExtResource("12_amy8k")
+
+[node name="highscore" type="Label" parent="4" unique_id=1310871912]
+offset_left = -370.0
+offset_top = 264.0
+offset_right = -287.0
+offset_bottom = 296.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_417ne")
+theme_override_font_sizes/font_size = 31
+text = "0"
+
+[node name="score" type="Label" parent="4" unique_id=284399691]
+offset_left = -453.0
+offset_top = 217.0
+offset_right = -367.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_417ne")
+theme_override_font_sizes/font_size = 31
+text = "0"
+
+[node name="5" type="Sprite2D" parent="." unique_id=1757840755]
+position = Vector2(35, -2533)
+texture = ExtResource("13_gbb5a")
+
+[node name="6" type="Sprite2D" parent="." unique_id=1778684478]
+position = Vector2(21, -3472)
+texture = ExtResource("14_gk4b0")
+
+[node name="7" type="Sprite2D" parent="." unique_id=523191656]
+position = Vector2(0, -3908)
+texture = ExtResource("15_20l77")
+
+[connection signal="pressed" from="2/Button" to="." method="_on_Restart_button_pressed"]
+[connection signal="pressed" from="3/Button" to="." method="_on_mainmenu_button_pressed"]

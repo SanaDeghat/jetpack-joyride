@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bs2wnbgffq871"]
+
+[ext_resource type="Script" uid="uid://c6u6phj783wx6" path="res://_start_screen.gd" id="1_l18ql"]
+[ext_resource type="Texture2D" uid="uid://xt1uocluttq5" path="res://background/mainMenu/1.png" id="2_lfnyb"]
+[ext_resource type="Texture2D" uid="uid://3a5424ainal0" path="res://background/mainMenu/1 copy.png" id="3_gch7q"]
+[ext_resource type="Texture2D" uid="uid://b35np4hem6wkm" path="res://background/mainMenu/sun.png" id="4_6p7u7"]
+[ext_resource type="Texture2D" uid="uid://08cy34lv6e0w" path="res://background/mainMenu/2.png" id="5_ob04q"]
+
+[node name="Node2D" type="Node2D" unique_id=1602943418]
+script = ExtResource("1_l18ql")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=718347017]
+offset_left = 1.0
+offset_top = -37.0
+offset_right = 1153.0
+offset_bottom = 647.0
+texture = ExtResource("2_lfnyb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1495661582]
+visible = false
+offset_right = 1152.0
+offset_bottom = 684.0
+texture = ExtResource("3_gch7q")
+metadata/_edit_use_anchors_ = true
+
+[node name="sun" type="Node2D" parent="." unique_id=2122323105]
+position = Vector2(584.11, 159)
+scale = Vector2(1.02, 1.02)
+
+[node name="TextureRect3" type="TextureRect" parent="sun" unique_id=823565511]
+offset_left = -290.0
+offset_top = -267.0
+offset_right = 276.54767
+offset_bottom = 299.54767
+texture = ExtResource("4_6p7u7")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1111086097]
+offset_left = 1.0
+offset_top = -37.0
+offset_right = 1153.0
+offset_bottom = 647.0
+texture = ExtResource("5_ob04q")
+metadata/_edit_use_anchors_ = true

@@ -1,11 +1,27 @@
 extends Node2D
 
-@onready var texture_rect1: TextureRect = $TextureRect
-@onready var texture_rect3: TextureRect = $Parallax2D/TextureRect
-@onready var texture_rect4: TextureRect = $Parallax2D3/TextureRect
-@onready var texture_rect2: TextureRect = $TextureRect2
-@onready var texture_rect5: TextureRect = $Parallax2D4/TextureRect
-@onready var sea_texture: TextureRect = $"../TextureRect"
+#bg layer 1
+@onready var background_texture: TextureRect = $Parallax2D2/TextureRect
+@onready var background_offscreenx_texture: TextureRect = $Parallax2D2/TextureRect/TextureRectx
+@onready var background_offscreeny_texture: TextureRect = $Parallax2D2/TextureRect/TextureRecty
+@onready var background_offscreenxy_texture: TextureRect = $Parallax2D2/TextureRect/TextureRectxy
+
+
+
+@onready var layer_three_background_texture: TextureRect = $Parallax2D/TextureRect
+@onready var layer_four_background_texture: TextureRect = $Parallax2D3/TextureRect
+@onready var layer_two_background_texture: TextureRect = $TextureRect2
+@onready var layer_five_background_texture: TextureRect = $Parallax2D4/TextureRect
+
+
+#sea textures
+@onready var sea_texture: TextureRect = $"../Parallax2D/TextureRect"
+@onready var sea_texture_offscreenx: TextureRect = $"../Parallax2D/TextureRectOffscreenx"
+@onready var sea_texture_offscreeny: TextureRect = $"../Parallax2D/TextureRectOffscreeny"
+@onready var sea_texture_offscreenxy: TextureRect = $"../Parallax2D/TextureRectOffscreenxy"
+
+
+
 @onready var sea_splash: CPUParticles2D = $"../CharacterBody2D/seaSplash"
 
 
@@ -22,7 +38,7 @@ var SEA_SPLASH_COLORS = {
 	5: Color.html("#5386BB"),
 	6: Color.html("#63848F"),
 }
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	if bgNum==0:
 		bgNum = randi_range(1,6)
@@ -31,21 +47,30 @@ func _ready() -> void:
 	if bgNum==3:
 		
 		character_body_2d.color=1
-	texture_rect1.texture= load("res://background/"+str(bgNum)+"/1.png")
-	texture_rect2.texture= load("res://background/"+str(bgNum)+"/2.png")
-	texture_rect3.texture= load("res://background/"+str(bgNum)+"/3.png")
-	texture_rect4.texture= load("res://background/"+str(bgNum)+"/4.png")
+	background_texture.texture= load("res://background/"+str(bgNum)+"/1.png")
+	background_offscreenx_texture.texture=background_texture.texture
+	background_offscreeny_texture.texture=background_texture.texture
+	background_offscreenxy_texture.texture=background_texture.texture
+	
+	
+	layer_two_background_texture.texture= load("res://background/"+str(bgNum)+"/2.png")
+	layer_three_background_texture.texture= load("res://background/"+str(bgNum)+"/3.png")
+	layer_four_background_texture.texture= load("res://background/"+str(bgNum)+"/4.png")
 	if bgNum==6:
-		texture_rect5.texture= load("res://background/"+str(bgNum)+"/5.png")
+		layer_five_background_texture.texture= load("res://background/"+str(bgNum)+"/5.png")
 	else:
-		texture_rect5.texture=null;
+		layer_five_background_texture.texture=null;
+			
 	sea_texture.texture= load("res://background/"+str(bgNum)+"/sea.png")
+	sea_texture_offscreenx.texture=sea_texture.texture
+	sea_texture_offscreeny.texture=sea_texture.texture
+	sea_texture_offscreenxy.texture=sea_texture.texture
 
+	
 func set_pace(value1: float,value2: float,value3: float):
 	parallax_2d.autoscroll.x=value1
 	parallax_2d_3.autoscroll.x=value3
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if global.gameRnning:
 		parallax_2d.autoscroll.x=(global.speed-100)*-1

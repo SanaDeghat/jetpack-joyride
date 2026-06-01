@@ -5,10 +5,7 @@ extends Node
 @export var viecle_powerup: PackedScene
 @export var spawn_rate = 1.3
 @onready var onsticle_timer: Timer = $onsticleTimer
-@onready var lose_screen: CanvasLayer = $"../CanvasLayer"
 @onready var character_body_2d: CharacterBody2D = $"../CharacterBody2D"
-@onready var high_score: Label = $"../CanvasLayer/TextureRect/lost/scores/highScore"
-@onready var your_score: Label = $"../CanvasLayer/TextureRect/lost/scores/YourScore"
 
 func _ready():
 	
@@ -41,9 +38,6 @@ func _on_obstacle_impact():
 		global.highscore= get_parent().score
 	
 	global.gameRnning=false
-#	parallax_2d.autoscroll.x=0
-	high_score.text=str(global.highscore)
-	your_score.text=str(get_parent().score)
 func _on_onsticle_timer_timeout() -> void:
 	if global.gameRnning:
 		spawn_obstacle()

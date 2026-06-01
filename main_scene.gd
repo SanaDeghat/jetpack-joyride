@@ -3,7 +3,6 @@ var score=0
 @onready var label: Label = $Label
 @onready var timer: Timer = $Timer
 @onready var parallax_2d: Parallax2D = $Parallax2D
-@onready var lose_screen: CanvasLayer = $CanvasLayer
 
 func _on_timer_timeout() -> void:
 	if global.gameRnning:

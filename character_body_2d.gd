@@ -4,30 +4,33 @@ const SPEED = 400.0
 const JUMP_VELOCITY = -500.0
 const roof_y := 50.0
 @onready var sea_splash: CPUParticles2D = $seaSplash
+@onready var death_screen: Node2D = $"../CanvasLayer/deathScreen"
 
-# ---------------------------
-# Majestic death arc (left fall)
-# ---------------------------
-const DEAD_THROW_UP := -320.0          # gentle lift (more negative = higher)
+const DEAD_THROW_UP := -320.0          
 const DEAD_THROW_LEFT := -140.0        # drift left
-const DEAD_GRAVITY_MULT := 0.55        # floatier than normal
-const DEAD_AIR_DRAG := 3.5             # smooth velocity changes
+const DEAD_GRAVITY_MULT := 0.2        # floatier than normal
+const DEAD_AIR_DRAG := 3.5           
 const DEAD_MAX_FALL_SPEED := 1050.0
 
 const DEAD_POSE_TILT_SPEED := 8.0      # how fast rotation eases to target pose
 
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var camera_2d: Camera2D = $Camera2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
 var viecle := false
 var color := 0
 
 var _was_running := true
 var _dead_time := 0.0
+var sea_splashed=false
+
 
 func _physics_process(delta: float) -> void:
-	if global_position.y>640.0:
+	if global_position.y>640.0&&!sea_splashed:
+		death_screen.showSelf(get_parent().score)
+
 		sea_splash.emitting=true
+		sea_splashed=true
 	if global.gameRnning:
 		_was_running = true
 		_dead_time = 0.0
@@ -57,8 +60,8 @@ func _physics_process(delta: float) -> void:
 			position.y = roof_y
 			velocity.y = 0
 
-	else:
-		# one-time death start: graceful lift + drift left
+	elif position.y <670:
+		camera_2d.move_camera()
 		if _was_running:
 			_was_running = false
 			_dead_time = 0.0
@@ -71,6 +74,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.animation = "falling" + str(color)
 
 		_dead_time += delta
+		
 
 		# gravity + smoothing
 		velocity += get_gravity() * DEAD_GRAVITY_MULT * delta

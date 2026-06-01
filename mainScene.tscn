@@ -7,19 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://bo25gr7a81y3h" path="res://background/3/2.png" id="4_6qrj0"]
 [ext_resource type="Script" uid="uid://ddw2hh1owdrup" path="res://obsticle_spawner.gd" id="5_2qqqv"]
 [ext_resource type="Texture2D" uid="uid://bqjqusm13h4lm" path="res://background/3/3.png" id="5_tlk23"]
-[ext_resource type="Texture2D" uid="uid://dcyrd5txanj8f" path="res://background/3/4.png" id="6_6k62e"]
+[ext_resource type="Texture2D" uid="uid://c14gvp0qjt2v2" path="res://background/3/4.png" id="6_6k62e"]
 [ext_resource type="PackedScene" uid="uid://hhfgldtrqmlg" path="res://rotatingObsticle.tscn" id="6_bnlnp"]
 [ext_resource type="PackedScene" uid="uid://vvviiqxh68vp" path="res://staticOsticle.tscn" id="6_we1jl"]
 [ext_resource type="PackedScene" uid="uid://dxitxmjkbtkjp" path="res://viecle_powerup.tscn" id="7_0pyiw"]
-[ext_resource type="Texture2D" uid="uid://cc4u5qwt6xbaj" path="res://background/4/sea.png" id="7_smdy7"]
-[ext_resource type="Texture2D" uid="uid://dhmt2fmk4ylot" path="res://background/6/sea.png" id="8_6qrj0"]
 [ext_resource type="PackedScene" uid="uid://cmy3bk521unun" path="res://moving_obsticle.tscn" id="8_bnlnp"]
+[ext_resource type="Texture2D" uid="uid://d0e2xbmnjht3d" path="res://background/5/sea.png" id="8_tlk23"]
 [ext_resource type="Script" uid="uid://lvjkksw6dqgs" path="res://pause_menu.gd" id="9_vuu3o"]
 [ext_resource type="Texture2D" uid="uid://d07c62343spnc" path="res://Falling.png" id="13_us837"]
 [ext_resource type="Texture2D" uid="uid://twtutdeg2mro" path="res://FallingLight.png" id="14_ykwv5"]
 [ext_resource type="Texture2D" uid="uid://blpn31civelwo" path="res://Sprite-0002-Sheet.png" id="15_466gm"]
 [ext_resource type="Texture2D" uid="uid://c73nt311c0637" path="res://Sprite-0001-Sheet.png" id="16_auxaw"]
 [ext_resource type="Script" uid="uid://bxe2c7qq3eimo" path="res://camera_2d.gd" id="17_auxaw"]
+[ext_resource type="PackedScene" uid="uid://bwustrouia55" path="res://death_screen.tscn" id="20_6qrj0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6qrj0"]
+load_path = "res://.godot/imported/sea.png-3680ecedb6b6dc6e83949045c22fea1a.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efo4c"]
 atlas = ExtResource("15_466gm")
@@ -95,21 +98,25 @@ region = Rect2(1024, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wsq5h"]
 atlas = ExtResource("15_466gm")
-region = Rect2(256, 0, 128, 128)
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w17v0"]
 atlas = ExtResource("15_466gm")
-region = Rect2(128, 0, 128, 128)
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nj2vb"]
 atlas = ExtResource("15_466gm")
-region = Rect2(0, 0, 128, 128)
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ueo7l"]
 atlas = ExtResource("15_466gm")
-region = Rect2(128, 0, 128, 128)
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgsjf"]
+atlas = ExtResource("15_466gm")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_birxv"]
 atlas = ExtResource("15_466gm")
 region = Rect2(256, 0, 128, 128)
 
@@ -159,13 +166,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_466gm")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_auxaw")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_smdy7")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_6qrj0")
 }, {
 "duration": 1.0,
@@ -173,7 +180,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"falling0",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -185,33 +192,30 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3qdnn")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_s7pqw")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_251pa")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_vg2gt")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1uw5o")
 }],
-"loop": true,
+"loop": false,
 "name": &"falling1",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_efo4c")
-}, {
-"duration": 1.2,
 "texture": SubResource("AtlasTexture_wsq5h")
 }, {
 "duration": 1.2,
 "texture": SubResource("AtlasTexture_w17v0")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_nj2vb")
 }, {
 "duration": 1.0,
@@ -219,6 +223,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vgsjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_birxv")
 }],
 "loop": true,
 "name": &"flying0",
@@ -254,17 +261,47 @@ size = Vector2(26, 63)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2qqqv"]
 
 [node name="Node2D" type="Node2D" unique_id=1058356665]
+texture_filter = 1
 script = ExtResource("1_61od6")
 
 [node name="backgrounds" type="Node2D" parent="." unique_id=1567918184]
 script = ExtResource("2_us837")
-bgNum = 4
+bgNum = 5
 
-[node name="TextureRect" type="TextureRect" parent="backgrounds" unique_id=654867257]
+[node name="Parallax2D2" type="Parallax2D" parent="backgrounds" unique_id=1688307776]
+
+[node name="TextureRect" type="TextureRect" parent="backgrounds/Parallax2D2" unique_id=654867257]
 offset_right = 1171.5555
 offset_bottom = 659.0
 texture = ExtResource("3_smdy7")
 expand_mode = 1
+
+[node name="TextureRectx" type="TextureRect" parent="backgrounds/Parallax2D2/TextureRect" unique_id=256623311]
+layout_mode = 0
+offset_left = -1171.5
+offset_right = 0.055541992
+offset_bottom = 659.0
+texture = ExtResource("3_smdy7")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRectxy" type="TextureRect" parent="backgrounds/Parallax2D2/TextureRect" unique_id=1525634206]
+layout_mode = 0
+offset_left = -1171.5
+offset_top = -659.0
+offset_right = 0.055541992
+texture = ExtResource("3_smdy7")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TextureRecty" type="TextureRect" parent="backgrounds/Parallax2D2/TextureRect" unique_id=1508045078]
+layout_mode = 0
+offset_top = -659.0
+offset_right = 1171.5555
+texture = ExtResource("3_smdy7")
+expand_mode = 1
+flip_v = true
 
 [node name="TextureRect2" type="TextureRect" parent="backgrounds" unique_id=461388107]
 offset_right = 1168.0
@@ -275,7 +312,7 @@ expand_mode = 1
 [node name="Parallax2D" type="Parallax2D" parent="backgrounds" unique_id=421721611]
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-300, 0)
-repeat_times = 2
+repeat_times = 3
 
 [node name="TextureRect" type="TextureRect" parent="backgrounds/Parallax2D" unique_id=1910329956]
 offset_right = 1173.3334
@@ -286,7 +323,7 @@ expand_mode = 1
 [node name="Parallax2D3" type="Parallax2D" parent="backgrounds" unique_id=1451046535]
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-400, 0)
-repeat_times = 2
+repeat_times = 3
 
 [node name="TextureRect" type="TextureRect" parent="backgrounds/Parallax2D3" unique_id=1724623513]
 offset_right = 1173.3334
@@ -297,7 +334,7 @@ expand_mode = 1
 [node name="Parallax2D4" type="Parallax2D" parent="backgrounds" unique_id=387323650]
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-400, 0)
-repeat_times = 2
+repeat_times = 3
 
 [node name="TextureRect" type="TextureRect" parent="backgrounds/Parallax2D4" unique_id=197580320]
 offset_right = 1152.0
@@ -305,23 +342,46 @@ offset_bottom = 689.0
 texture = ExtResource("6_6k62e")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="backgrounds" unique_id=1531076119]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1130243099]
+texture_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=457833277]
 z_index = 2
-offset_left = 3.0
+texture_filter = 1
+offset_left = -1.0
 offset_top = 161.0
 offset_right = 1155.0
 offset_bottom = 809.0
-texture = ExtResource("7_smdy7")
+texture = ExtResource("8_tlk23")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=457833277]
+[node name="TextureRectOffscreenxy" type="TextureRect" parent="Parallax2D" unique_id=1080192909]
 z_index = 2
-offset_left = -147.0
-offset_top = 161.0
-offset_right = 1155.0
-offset_bottom = 809.0
-texture = ExtResource("8_6qrj0")
+offset_left = -1156.0
+offset_top = 808.0
+offset_bottom = 1456.0
+texture = SubResource("CompressedTexture2D_6qrj0")
 expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TextureRectOffscreeny" type="TextureRect" parent="Parallax2D" unique_id=1369207132]
+z_index = 2
+offset_top = 808.0
+offset_right = 1156.0
+offset_bottom = 1456.0
+texture = SubResource("CompressedTexture2D_6qrj0")
+expand_mode = 1
+flip_v = true
+
+[node name="TextureRectOffscreenx" type="TextureRect" parent="Parallax2D" unique_id=816437265]
+z_index = 2
+offset_left = -1156.0
+offset_top = 161.0
+offset_bottom = 809.0
+texture = SubResource("CompressedTexture2D_6qrj0")
+expand_mode = 1
+flip_h = true
 
 [node name="Label" type="Label" parent="." unique_id=1031648831]
 offset_right = 40.0
@@ -352,7 +412,6 @@ collision_mask = 3
 script = ExtResource("1_g4qto")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D" unique_id=277695437]
-visible = false
 position = Vector2(-4, 8)
 rotation = 1.5707964
 scale = Vector2(0.9999998, 0.9999998)
@@ -373,7 +432,7 @@ scale_amount_max = 5.0
 texture_filter = 1
 position = Vector2(-6, -4)
 sprite_frames = SubResource("SpriteFrames_3qdnn")
-animation = &"descent1"
+animation = &"flying0"
 autoplay = "flying1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=132834216]
@@ -387,6 +446,7 @@ scale = Vector2(0.9999998, 0.9999998)
 emitting = false
 amount = 60
 lifetime = 1.5
+one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 lifetime_randomness = 0.8
@@ -407,61 +467,7 @@ color = Color(0.5921569, 0.85490197, 0.9764706, 1)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1675707390]
 ignore_rotation = false
 enabled = false
-zoom = Vector2(3, 3)
 script = ExtResource("17_auxaw")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=40391904]
-layer = 2
-visible = false
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=468189637]
-visibility_layer = 16
-offset_left = 95.0
-offset_top = 69.0
-offset_right = 1025.0
-offset_bottom = 570.0
-texture = SubResource("PlaceholderTexture2D_2qqqv")
-
-[node name="lost" type="Label" parent="CanvasLayer/TextureRect" unique_id=955422902]
-layout_mode = 0
-offset_right = 914.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 100
-text = "YPU LOST"
-
-[node name="scores" type="Label" parent="CanvasLayer/TextureRect/lost" unique_id=1409815164]
-layout_mode = 0
-offset_top = 117.0
-offset_right = 564.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 50
-text = "Your score:
-High score:"
-
-[node name="YourScore" type="Label" parent="CanvasLayer/TextureRect/lost/scores" unique_id=142045695]
-layout_mode = 0
-offset_left = 285.0
-offset_top = -1.0
-offset_right = 353.0
-offset_bottom = 68.0
-theme_override_font_sizes/font_size = 50
-text = "0"
-
-[node name="highScore" type="Label" parent="CanvasLayer/TextureRect/lost/scores" unique_id=976064329]
-layout_mode = 0
-offset_left = 288.0
-offset_top = 72.0
-offset_right = 471.0
-offset_bottom = 141.0
-theme_override_font_sizes/font_size = 50
-text = "0"
-
-[node name="Restart" type="Button" parent="CanvasLayer/TextureRect" unique_id=811361673]
-layout_mode = 0
-offset_top = 278.0
-offset_right = 571.0
-offset_bottom = 429.0
-text = "RESTART"
 
 [node name="pauseMenu" type="CanvasLayer" parent="." unique_id=721238769]
 process_mode = 3
@@ -501,11 +507,16 @@ offset_bottom = 334.0
 text = "RESTART"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=316629091]
+enabled = false
 zoom = Vector2(0.42, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=409027202]
+process_priority = 3
+
+[node name="deathScreen" parent="CanvasLayer" unique_id=1025744235 instance=ExtResource("20_6qrj0")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="obsticle_spawner" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="pressed" from="CanvasLayer/TextureRect/Restart" to="obsticle_spawner" method="_on_restart_pressed"]
 [connection signal="pressed" from="pauseMenu/TextureRect/resume" to="pauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="pauseMenu/TextureRect/Restart" to="pauseMenu" method="_on_restart_pressed"]

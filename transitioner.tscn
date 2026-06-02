@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bre4jpedgx3i1"]
+
+[ext_resource type="Script" uid="uid://bpylwoltowchh" path="res://transitioner.gd" id="1_cm3t0"]
+[ext_resource type="Texture2D" uid="uid://b6pdkjbe757lr" path="res://background/transitioner.png" id="2_c2knp"]
+
+[node name="transitioner" type="CanvasLayer" unique_id=1614598481]
+script = ExtResource("1_cm3t0")
+
+[node name="Transitioner" type="Sprite2D" parent="." unique_id=712616597]
+position = Vector2(575, 1056)
+texture = ExtResource("2_c2knp")

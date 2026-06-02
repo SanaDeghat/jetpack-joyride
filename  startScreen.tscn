@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://3a5424ainal0" path="res://background/mainMenu/1 copy.png" id="3_gch7q"]
 [ext_resource type="Texture2D" uid="uid://b35np4hem6wkm" path="res://background/mainMenu/sun.png" id="4_6p7u7"]
 [ext_resource type="Texture2D" uid="uid://08cy34lv6e0w" path="res://background/mainMenu/2.png" id="5_ob04q"]
+[ext_resource type="PackedScene" uid="uid://bre4jpedgx3i1" path="res://transitioner.tscn" id="6_lfnyb"]
+[ext_resource type="AudioStream" uid="uid://dgx268o4uo8mo" path="res://background/Die Worte des Erlösers am Kreuze.mp3" id="7_gch7q"]
 
 [node name="Node2D" type="Node2D" unique_id=1602943418]
 script = ExtResource("1_l18ql")
@@ -25,7 +27,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="sun" type="Node2D" parent="." unique_id=2122323105]
 position = Vector2(584.11, 159)
-scale = Vector2(1.02, 1.02)
+scale = Vector2(1.19, 1.19)
 
 [node name="TextureRect3" type="TextureRect" parent="sun" unique_id=823565511]
 offset_left = -290.0
@@ -41,3 +43,10 @@ offset_right = 1153.0
 offset_bottom = 647.0
 texture = ExtResource("5_ob04q")
 metadata/_edit_use_anchors_ = true
+
+[node name="transitioner" parent="." unique_id=1614598481 instance=ExtResource("6_lfnyb")]
+
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="." unique_id=1314839440]
+stream = ExtResource("7_gch7q")
+autoplay = true
+parameters/looping = true

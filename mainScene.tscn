@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://vvviiqxh68vp" path="res://staticOsticle.tscn" id="6_we1jl"]
 [ext_resource type="PackedScene" uid="uid://dxitxmjkbtkjp" path="res://viecle_powerup.tscn" id="7_0pyiw"]
 [ext_resource type="PackedScene" uid="uid://cmy3bk521unun" path="res://moving_obsticle.tscn" id="8_bnlnp"]
+[ext_resource type="Texture2D" uid="uid://qnkdhra4lqou" path="res://background/stylish-ripped-torn-paper-transparent-texture-free-png.webp" id="8_kpsh6"]
 [ext_resource type="Texture2D" uid="uid://d0e2xbmnjht3d" path="res://background/5/sea.png" id="8_tlk23"]
+[ext_resource type="FontFile" uid="uid://bo4clhh8cutdw" path="res://background/1/SpecialElite-Regular.ttf" id="9_3qdnn"]
 [ext_resource type="Script" uid="uid://lvjkksw6dqgs" path="res://pause_menu.gd" id="9_vuu3o"]
 [ext_resource type="Texture2D" uid="uid://d07c62343spnc" path="res://Falling.png" id="13_us837"]
 [ext_resource type="Texture2D" uid="uid://twtutdeg2mro" path="res://FallingLight.png" id="14_ykwv5"]
@@ -20,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c73nt311c0637" path="res://Sprite-0001-Sheet.png" id="16_auxaw"]
 [ext_resource type="Script" uid="uid://bxe2c7qq3eimo" path="res://camera_2d.gd" id="17_auxaw"]
 [ext_resource type="PackedScene" uid="uid://bwustrouia55" path="res://death_screen.tscn" id="20_6qrj0"]
+[ext_resource type="PackedScene" uid="uid://bre4jpedgx3i1" path="res://transitioner.tscn" id="21_tlk23"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6qrj0"]
 load_path = "res://.godot/imported/sea.png-3680ecedb6b6dc6e83949045c22fea1a.ctex"
@@ -206,7 +209,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"falling1",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -256,7 +259,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61od6"]
-size = Vector2(26, 63)
+size = Vector2(42.000015, 75)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2qqqv"]
 
@@ -266,7 +269,6 @@ script = ExtResource("1_61od6")
 
 [node name="backgrounds" type="Node2D" parent="." unique_id=1567918184]
 script = ExtResource("2_us837")
-bgNum = 5
 
 [node name="Parallax2D2" type="Parallax2D" parent="backgrounds" unique_id=1688307776]
 
@@ -383,10 +385,21 @@ texture = SubResource("CompressedTexture2D_6qrj0")
 expand_mode = 1
 flip_h = true
 
-[node name="Label" type="Label" parent="." unique_id=1031648831]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="StylishRippedTornPaperTransparentTextureFreePng" type="Sprite2D" parent="." unique_id=1732467884]
+position = Vector2(1069.0001, 4)
+scale = Vector2(0.604, 0.43)
+texture = ExtResource("8_kpsh6")
+
+[node name="Label" type="Label" parent="StylishRippedTornPaperTransparentTextureFreePng" unique_id=1031648831]
+offset_left = -138.60626
+offset_top = 27.876106
+offset_right = 160.1673
+offset_bottom = 102.87611
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_3qdnn")
+theme_override_font_sizes/font_size = 55
 text = "0"
+vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1375024688]
 process_callback = 0
@@ -427,16 +440,17 @@ linear_accel_min = 6.93
 linear_accel_max = 51.48
 scale_amount_min = 2.0
 scale_amount_max = 5.0
+color = Color(0.93333334, 0.8392157, 0.57254905, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=707554561]
 texture_filter = 1
 position = Vector2(-6, -4)
 sprite_frames = SubResource("SpriteFrames_3qdnn")
-animation = &"flying0"
+animation = &"falling1"
 autoplay = "flying1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=132834216]
-position = Vector2(-6, 17.5)
+position = Vector2(-6.019989, 23.5)
 shape = SubResource("RectangleShape2D_61od6")
 
 [node name="seaSplash" type="CPUParticles2D" parent="CharacterBody2D" unique_id=1288318186]
@@ -514,6 +528,9 @@ zoom = Vector2(0.42, 0.42)
 process_priority = 3
 
 [node name="deathScreen" parent="CanvasLayer" unique_id=1025744235 instance=ExtResource("20_6qrj0")]
+
+[node name="transitioner" parent="." unique_id=1614598481 instance=ExtResource("21_tlk23")]
+process_priority = 6
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obsticle_spawner/onsticleTimer" to="obsticle_spawner" method="_on_onsticle_timer_timeout"]

@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://bo4clhh8cutdw" path="res://background/1/SpecialElite-Regular.ttf" id="14_417ne"]
 [ext_resource type="Texture2D" uid="uid://cj0348y8j8yt1" path="res://background/deathScreen/6.png" id="14_gk4b0"]
 [ext_resource type="Texture2D" uid="uid://ddnwlimreu4d1" path="res://background/deathScreen/7.png" id="15_20l77"]
+[ext_resource type="PackedScene" uid="uid://bre4jpedgx3i1" path="res://transitioner.tscn" id="18_tkjqq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ol57q"]
 
@@ -146,6 +147,9 @@ texture = ExtResource("14_gk4b0")
 [node name="7" type="Sprite2D" parent="." unique_id=523191656]
 position = Vector2(0, -3908)
 texture = ExtResource("15_20l77")
+
+[node name="transitioner" parent="." unique_id=1614598481 instance=ExtResource("18_tkjqq")]
+visible = false
 
 [connection signal="pressed" from="2/Button" to="." method="_on_Restart_button_pressed"]
 [connection signal="pressed" from="3/Button" to="." method="_on_mainmenu_button_pressed"]

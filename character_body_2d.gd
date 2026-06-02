@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
 const JUMP_VELOCITY = -500.0
 const roof_y := 50.0
 @onready var sea_splash: CPUParticles2D = $seaSplash
@@ -35,7 +34,6 @@ func _physics_process(delta: float) -> void:
 		_was_running = true
 		_dead_time = 0.0
 
-		# --- movement / flapping ---
 		if Input.is_action_just_pressed("ui_accept") and viecle:
 			cpu_particles_2d.emitting = true
 			velocity.y = JUMP_VELOCITY
@@ -51,7 +49,6 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.animation = "flying" + str(color)
 			velocity.y = 0
 
-		# keep upright while alive
 
 		move_and_slide()
 

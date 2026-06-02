@@ -18,12 +18,14 @@ extends Node2D
 
 @onready var highscore: Label = $"4/highscore"
 @onready var score: Label = $"4/score"
+@onready var transitioner: CanvasLayer = $transitioner
 
 var _idle_tweens: Array[Tween] = []
 
 func _ready() -> void:
 	visible = false
-	showSelf(0)
+	transitioner.hide_transition(0.1)
+
 
 func showSelf(playerScore: int) -> void:
 	highscore.text = str(global.highscore)
@@ -34,7 +36,7 @@ func showSelf(playerScore: int) -> void:
 	var sprites: Array[Sprite2D] = [_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15]
 
 	var base_duration := 1.8
-	var duration_jitter := 0.9
+	var duration_jitter := 2
 	var base_delay := 0.05 
 	for i in sprites.size():
 		var s := sprites[i]
@@ -118,9 +120,13 @@ func _stop_idle_tweens() -> void:
 	_idle_tweens.clear()
 
 func _on_Restart_button_pressed() -> void:
+	await transitioner.show_transition(1.5)
+	global.speed=400
+
 	global.gameRnning = true
 	get_tree().change_scene_to_file("res://mainScene.tscn")
 
 func _on_mainmenu_button_pressed() -> void:
+	await transitioner.show_transition(1.5)
 	global.gameRnning = true
 	get_tree().change_scene_to_file("res:// startScreen.tscn")

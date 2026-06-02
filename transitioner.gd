@@ -1,0 +1,44 @@
+extends CanvasLayer
+
+@onready var transitioner: Sprite2D = $Transitioner
+
+
+var x= 577.0
+var hidden_posy= 1056.0
+var normaly= 206.0
+
+var _tween: Tween
+
+func _ready() -> void:
+	transitioner.position.x = x
+	transitioner.position.y = normaly
+
+	
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_left"):
+		show_transition(2)
+	if Input.is_action_just_pressed("ui_right"):
+		hide_transition(2)
+
+
+
+func show_transition(duration: float = 0.6) -> void:
+	self.visible=true
+	if is_instance_valid(_tween):
+		_tween.kill()
+
+	_tween = create_tween()
+	_tween.set_trans(Tween.TRANS_QUINT)
+	_tween.set_ease(Tween.EASE_OUT)
+	_tween.tween_property(transitioner, "position", Vector2( x,   normaly), duration)
+	await _tween.finished
+
+func hide_transition(duration: float = 0.6) -> void:
+	if is_instance_valid(_tween):
+		_tween.kill()
+
+	_tween = create_tween()
+	_tween.set_trans(Tween.TRANS_QUINT)
+	_tween.set_ease(Tween.EASE_IN_OUT)
+	_tween.tween_property(transitioner, "position", Vector2( x,   hidden_posy), duration)

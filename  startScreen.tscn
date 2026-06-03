@@ -44,7 +44,8 @@ offset_bottom = 647.0
 texture = ExtResource("5_ob04q")
 metadata/_edit_use_anchors_ = true
 
-[node name="transitioner" parent="." unique_id=1614598481 instance=ExtResource("6_lfnyb")]
+[node name="transitioner" parent="." unique_id=1614598481 node_paths=PackedStringArray("bgmusic") instance=ExtResource("6_lfnyb")]
+bgmusic = NodePath("../bgmusic")
 
 [node name="bgmusic" type="AudioStreamPlayer2D" parent="." unique_id=1314839440]
 stream = ExtResource("7_gch7q")

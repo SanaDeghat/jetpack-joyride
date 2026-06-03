@@ -4,10 +4,12 @@ var score=0
 @onready var parallax_2d: Parallax2D = $Parallax2D
 @onready var transitioner: CanvasLayer = $transitioner
 @onready var label: Label = $StylishRippedTornPaperTransparentTextureFreePng/Label
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready() -> void:
 	transitioner.hide_transition(1.5)
+
 
 func _on_timer_timeout() -> void:
 	if global.gameRnning:

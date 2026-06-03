@@ -3,7 +3,10 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -500.0
 const roof_y := 50.0
 @onready var sea_splash: CPUParticles2D = $seaSplash
+@onready var sound_splash: AudioStreamPlayer2D = $splash
 @onready var death_screen: Node2D = $"../CanvasLayer/deathScreen"
+@onready var death_sound: AudioStreamPlayer2D = $death_sound
+@onready var bgmusic: AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
 
 const DEAD_THROW_UP := -320.0          
 const DEAD_THROW_LEFT := -140.0        # drift left
@@ -27,7 +30,8 @@ var sea_splashed=false
 func _physics_process(delta: float) -> void:
 	if global_position.y>640.0&&!sea_splashed:
 		death_screen.showSelf(get_parent().score)
-
+		sound_splash.play()
+		onResetMusic()
 		sea_splash.emitting=true
 		sea_splashed=true
 	if global.gameRnning:
@@ -58,8 +62,23 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 0
 
 	elif position.y <670:
+		
 		camera_2d.move_camera()
 		if _was_running:
+			
+			var t := create_tween()
+			bgmusic.set_meta("fade_tween", t)
+
+			t.set_trans(Tween.TRANS_SINE)
+			t.set_ease(Tween.EASE_IN_OUT)
+
+			# -80 dB is effectively silent.
+			t.tween_property(bgmusic, "volume_db", -30.0, 0.7)
+			
+			death_sound.play()
+			death_sound.set_meta("fade_tween", t)
+			t.tween_property(death_sound, "volume_db", -30.0, 4)
+
 			_was_running = false
 			_dead_time = 0.0
 			cpu_particles_2d.emitting = false
@@ -67,7 +86,6 @@ func _physics_process(delta: float) -> void:
 			# gentle pop upward + drift left (majestic, not violent)
 			velocity.y = min(velocity.y, DEAD_THROW_UP)
 			velocity.x = DEAD_THROW_LEFT
-
 		animated_sprite_2d.animation = "falling" + str(color)
 
 		_dead_time += delta
@@ -96,3 +114,16 @@ func _physics_process(delta: float) -> void:
 
 
 		move_and_slide()
+
+
+func onResetMusic() -> void:
+	var t := create_tween()
+
+	t.set_trans(Tween.TRANS_SINE)
+	t.set_ease(Tween.EASE_IN_OUT)
+
+	bgmusic.stream=load("res://music/gameMusic3.mp3")
+	bgmusic.play()
+	bgmusic.set_meta("fade_tween", t)
+	# -80 dB is effectively silent.
+	t.tween_property(bgmusic, "volume_db", 00.0, 2)

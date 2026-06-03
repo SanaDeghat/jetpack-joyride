@@ -1,7 +1,8 @@
 extends CanvasLayer
 
 @onready var transitioner: Sprite2D = $Transitioner
-
+@export var bgmusic: AudioStreamPlayer2D
+var audio_tween: Tween
 
 var x= 577.0
 var hidden_posy= 1056.0
@@ -22,8 +23,37 @@ func _process(delta: float) -> void:
 		hide_transition(2)
 
 
+func fade_out_audio(duration: float = 1.0) -> void:
+	if bgmusic == null:
+		return
 
+	if is_instance_valid(audio_tween):
+		audio_tween.kill()
+
+	audio_tween = create_tween()
+	audio_tween.tween_property(
+		bgmusic,
+		"volume_db",
+		-30.0,
+		duration
+	)
+	
+func fade_in_audio(duration: float = 1.0) -> void:
+	if bgmusic == null:
+		return
+
+	if is_instance_valid(audio_tween):
+		audio_tween.kill()
+
+	audio_tween = create_tween()
+	audio_tween.tween_property(
+		bgmusic,
+		"volume_db",
+		00.0,
+		duration
+	)
 func show_transition(duration: float = 0.6) -> void:
+	fade_out_audio(duration)
 	self.visible=true
 	if is_instance_valid(_tween):
 		_tween.kill()
@@ -35,6 +65,7 @@ func show_transition(duration: float = 0.6) -> void:
 	await _tween.finished
 
 func hide_transition(duration: float = 0.6) -> void:
+	fade_in_audio(duration)
 	if is_instance_valid(_tween):
 		_tween.kill()
 

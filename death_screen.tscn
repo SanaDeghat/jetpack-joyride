@@ -151,5 +151,7 @@ texture = ExtResource("15_20l77")
 [node name="transitioner" parent="." unique_id=1614598481 instance=ExtResource("18_tkjqq")]
 visible = false
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=662267817]
+
 [connection signal="pressed" from="2/Button" to="." method="_on_Restart_button_pressed"]
 [connection signal="pressed" from="3/Button" to="." method="_on_mainmenu_button_pressed"]

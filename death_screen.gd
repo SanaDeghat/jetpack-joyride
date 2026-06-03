@@ -19,6 +19,7 @@ extends Node2D
 @onready var highscore: Label = $"4/highscore"
 @onready var score: Label = $"4/score"
 @onready var transitioner: CanvasLayer = $transitioner
+@onready var bgmusic: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D"
 
 var _idle_tweens: Array[Tween] = []
 
@@ -120,13 +121,15 @@ func _stop_idle_tweens() -> void:
 	_idle_tweens.clear()
 
 func _on_Restart_button_pressed() -> void:
-	await transitioner.show_transition(1.5)
-	global.speed=400
-
+	global.speed = 400
 	global.gameRnning = true
+
+	await transitioner.show_transition(1.5) # fade OUT first
 	get_tree().change_scene_to_file("res://mainScene.tscn")
+	
 
 func _on_mainmenu_button_pressed() -> void:
-	await transitioner.show_transition(1.5)
 	global.gameRnning = true
-	get_tree().change_scene_to_file("res:// startScreen.tscn")
+
+	await transitioner.show_transition(1.5) # fade OUT first
+	get_tree().change_scene_to_file("res://startScreen.tscn")

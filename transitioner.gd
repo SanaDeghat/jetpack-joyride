@@ -14,33 +14,32 @@ func _ready() -> void:
 	transitioner.position.x = x
 	transitioner.position.y = normaly
 
-	
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_left"):
-		show_transition(2)
-	if Input.is_action_just_pressed("ui_right"):
-		hide_transition(2)
 
 
 func fade_out_audio(duration: float = 1.0) -> void:
 	if bgmusic == null:
-		return
+		bgmusic=_get_bgmusic()
 
 	if is_instance_valid(audio_tween):
+		print ("yippidydy")
 		audio_tween.kill()
 
 	audio_tween = create_tween()
+	print ("yippidydydy")
 	audio_tween.tween_property(
 		bgmusic,
 		"volume_db",
 		-30.0,
 		duration
 	)
-	
+	print ("yippidydydydy")
+func _get_bgmusic() -> AudioStreamPlayer2D:
+	return get_tree().current_scene.get_node_or_null("AudioStreamPlayer2D")
+
 func fade_in_audio(duration: float = 1.0) -> void:
 	if bgmusic == null:
-		return
+		bgmusic=_get_bgmusic()
+
 
 	if is_instance_valid(audio_tween):
 		audio_tween.kill()

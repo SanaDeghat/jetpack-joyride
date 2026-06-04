@@ -7,15 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if global.gameRnning:
-		if Input.is_action_just_pressed("pause_action") :
-			if get_tree().paused:
-				self.visible=false
-				get_tree().paused = false
-			else:
-				self.visible=true
-				get_tree().paused = true
+
 		
 
 

@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://ce3mocpbsp1v0"]
+
+[ext_resource type="Script" uid="uid://bhpe683vbgm8y" path="res://pause_screen.gd" id="1_ky140"]
+[ext_resource type="FontFile" uid="uid://bo4clhh8cutdw" path="res://background/1/SpecialElite-Regular.ttf" id="2_otygw"]
+[ext_resource type="PackedScene" uid="uid://bre4jpedgx3i1" path="res://transitioner.tscn" id="3_4kt20"]
+[ext_resource type="Texture2D" uid="uid://cn5qll566yixs" path="res://background/Game paused/21.png" id="4_3to3d"]
+[ext_resource type="Texture2D" uid="uid://prr31tlq8dij" path="res://background/Game paused/20.png" id="5_iwmls"]
+[ext_resource type="Texture2D" uid="uid://bhqoi2y881l1d" path="res://background/Game paused/16.png" id="6_ysh2g"]
+[ext_resource type="Texture2D" uid="uid://d1cy4qi0miwck" path="res://background/Game paused/17.png" id="7_vlag7"]
+[ext_resource type="Texture2D" uid="uid://klp024gf8uaa" path="res://background/Game paused/18.png" id="8_gglvk"]
+[ext_resource type="Texture2D" uid="uid://d0tmxdsj8knpf" path="res://background/Game paused/19.png" id="9_023og"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ky140"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otygw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4kt20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3to3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwmls"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ol57q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pboiy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enuak"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_or0q7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhs35"]
+
+[sub_resource type="Theme" id="Theme_1tmu8"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 37
+Button/fonts/font = ExtResource("2_otygw")
+Button/styles/disabled = SubResource("StyleBoxEmpty_ol57q")
+Button/styles/focus = SubResource("StyleBoxEmpty_pboiy")
+Button/styles/hover = SubResource("StyleBoxEmpty_enuak")
+Button/styles/normal = SubResource("StyleBoxEmpty_or0q7")
+Button/styles/pressed = SubResource("StyleBoxEmpty_uhs35")
+
+[node name="pauseScreen" type="Node2D" unique_id=1025744235]
+process_mode = 3
+texture_filter = 2
+position = Vector2(574, 327)
+scale = Vector2(1.05, 1.05)
+script = ExtResource("1_ky140")
+
+[node name="21" type="Sprite2D" parent="." unique_id=1910195149]
+position = Vector2(26.666668, -616.1905)
+scale = Vector2(1.0000002, 1.0000002)
+texture = ExtResource("4_3to3d")
+
+[node name="22" type="Sprite2D" parent="." unique_id=1423403366]
+position = Vector2(3153.3335, 25.714283)
+scale = Vector2(1.0000002, 1.0000002)
+texture = ExtResource("5_iwmls")
+
+[node name="23" type="Sprite2D" parent="." unique_id=527834274]
+position = Vector2(-2961.905, 9.523819)
+texture = ExtResource("6_ysh2g")
+
+[node name="24" type="Sprite2D" parent="." unique_id=1591797299]
+position = Vector2(-4709.5244, -23.809631)
+texture = ExtResource("7_vlag7")
+
+[node name="Button" type="Button" parent="24" unique_id=233350129]
+offset_left = -248.57129
+offset_top = 86.66681
+offset_right = 172.3811
+offset_bottom = 176.19061
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky140")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_otygw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4kt20")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3to3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iwmls")
+
+[node name="25" type="Sprite2D" parent="." unique_id=187832271]
+position = Vector2(6222.8574, 80.95233)
+texture = ExtResource("8_gglvk")
+
+[node name="Button" type="Button" parent="25" unique_id=1145398370]
+offset_left = -161.90283
+offset_top = 204.762
+offset_right = 127.09717
+offset_bottom = 300.762
+theme = SubResource("Theme_1tmu8")
+metadata/_edit_use_anchors_ = true
+
+[node name="26" type="Sprite2D" parent="." unique_id=1945979076]
+position = Vector2(25.714273, -2112.3813)
+texture = ExtResource("9_023og")
+
+[node name="transitioner" parent="." unique_id=1614598481 instance=ExtResource("3_4kt20")]
+visible = false
+
+[connection signal="pressed" from="24/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="25/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="25/Button" to="." method="_on_Restart_button_pressed"]

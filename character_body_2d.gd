@@ -126,4 +126,4 @@ func onResetMusic() -> void:
 	bgmusic.play()
 	bgmusic.set_meta("fade_tween", t)
 	# -80 dB is effectively silent.
-	t.tween_property(bgmusic, "volume_db", 00.0, 2)
+	t.tween_property(bgmusic, "volume_db", 10.0, 2)

@@ -133,3 +133,4 @@ func _on_mainmenu_button_pressed() -> void:
 
 	await transitioner.show_transition(1.5) # fade OUT first
 	get_tree().change_scene_to_file("res://startScreen.tscn")
+	

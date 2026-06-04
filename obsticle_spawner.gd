@@ -66,9 +66,3 @@ func spawn_powerup():
 	powerup.global_position.y = randf_range(50, 600)
 	powerup.impact.connect(_on_powerup_impact)
 	add_child(powerup)
-
-	
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	pass

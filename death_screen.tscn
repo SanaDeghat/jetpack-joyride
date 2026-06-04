@@ -149,7 +149,6 @@ position = Vector2(0, -3908)
 texture = ExtResource("15_20l77")
 
 [node name="transitioner" parent="." unique_id=1614598481 instance=ExtResource("18_tkjqq")]
-visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=662267817]
 

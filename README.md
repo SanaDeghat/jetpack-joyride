@@ -1,5 +1,7 @@
 HEY HEY Im really sorry about hwo messy this whole repo is i get a little carrried away sometimes 
 Game timeee 
+play here:https://sanadeghat.itch.io/heliophilia
+
 So if you know 20 game challange :https://20_games_challenge.gitlab.io/challenge/ i was tryong to do day 2, i got a bit carried away since this rook 25+ hours
 game screen shot :
 <img width="1582" height="952" alt="image" src="https://github.com/user-attachments/assets/e0046c3c-9653-4f5f-97fd-5cc3e2b61d95" />

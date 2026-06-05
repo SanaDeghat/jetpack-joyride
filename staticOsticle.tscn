@@ -1,28 +1,45 @@
 [gd_scene format=3 uid="uid://vvviiqxh68vp"]
 
 [ext_resource type="Script" uid="uid://dxcubkqo0w8b2" path="res://static_body_2d.gd" id="1_1c3bj"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2qqqv"]
+[ext_resource type="Texture2D" uid="uid://cdfrq1im43h8p" path="res://obsticles/pixil-frame-0 (16).png" id="2_5h7gf"]
+[ext_resource type="Texture2D" uid="uid://d31mlt04ver1x" path="res://obsticles/pixil-frame-0 (17).png" id="3_lqig5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we1jl"]
-size = Vector2(52, 209)
+size = Vector2(34.999992, 209)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_knlrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lqig5")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5h7gf")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1314106614]
 script = ExtResource("1_1c3bj")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1067446494]
-offset_left = -29.99998
-offset_top = -108.99999
-offset_right = 31.00002
-offset_bottom = 108.00001
-texture = SubResource("PlaceholderTexture2D_2qqqv")
-metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=506033988]
 position = Vector2(-29.99998, -108.99999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964509746]
-position = Vector2(30, 109)
+position = Vector2(31.499985, 108.99999)
 shape = SubResource("RectangleShape2D_we1jl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1915053401]
+position = Vector2(1.5000005, 0.49998713)
+scale = Vector2(0.75, 8.599999)
+sprite_frames = SubResource("SpriteFrames_knlrr")
+animation = &"1"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

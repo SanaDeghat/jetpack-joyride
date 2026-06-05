@@ -25,6 +25,7 @@ func spawn_obstacle():
 	var obstacle = scenes.pick_random().instantiate()
 	obstacle.add_to_group("obstacles")
 	obstacle.global_position.x = 1400
+	
 	if obstacle.id==1 or obstacle.id==2:
 		obstacle.rotation=randf_range(0,360)
 		obstacle.global_position.y = randf_range(50, 600)
@@ -32,6 +33,9 @@ func spawn_obstacle():
 		obstacle.global_position.y =character_body_2d.global_position.y 
 	obstacle.impact.connect(_on_obstacle_impact)
 	add_child(obstacle)
+	print("oplayer color:"+str(character_body_2d.color))
+	obstacle.change_color(character_body_2d.color)
+
 	
 func _on_obstacle_impact():
 	if get_parent().score >global.highscore:

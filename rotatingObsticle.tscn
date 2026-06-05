@@ -1,26 +1,45 @@
 [gd_scene format=3 uid="uid://hhfgldtrqmlg"]
 
 [ext_resource type="Script" uid="uid://lbbpeqmdmev5" path="res://rotating_obsticle.gd" id="1_wm4dx"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2qqqv"]
+[ext_resource type="Texture2D" uid="uid://cdfrq1im43h8p" path="res://obsticles/pixil-frame-0 (16).png" id="2_l0om1"]
+[ext_resource type="Texture2D" uid="uid://d31mlt04ver1x" path="res://obsticles/pixil-frame-0 (17).png" id="3_c4cvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we1jl"]
-size = Vector2(52, 40)
+size = Vector2(21, 206)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17op8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c4cvs")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l0om1")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
 
 [node name="RotatingBody2D" type="StaticBody2D" unique_id=1314106614]
 rotation = -6.2831855
 script = ExtResource("1_wm4dx")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1067446494]
-offset_left = -10.296581
-offset_top = -109.00001
-offset_right = 8.261463
-offset_bottom = 107.99999
-texture = SubResource("PlaceholderTexture2D_2qqqv")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=506033988]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964509746]
+position = Vector2(0.50000036, -1.0000001)
 shape = SubResource("RectangleShape2D_we1jl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1004665172]
+position = Vector2(0.88852787, -0.5077362)
+scale = Vector2(0.40927273, 8.534748)
+sprite_frames = SubResource("SpriteFrames_17op8")
+animation = &"1"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

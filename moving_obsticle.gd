@@ -1,7 +1,9 @@
 extends StaticBody2D
 var id=3;
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-
+func change_color(color:int):
+	animated_sprite_2d.animation=str(color)
 
 signal impact
 func _process(delta):

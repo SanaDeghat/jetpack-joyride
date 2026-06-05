@@ -4,6 +4,10 @@ var id=1;
 @export var rotation_speed := 2.0
 
 signal impact
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+func change_color(color:int):
+	animated_sprite_2d.animation=str(color)
 
 func _process(delta):
 	

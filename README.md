@@ -12,9 +12,10 @@ press space to floy
 
 if press esc the game will pause and youll have the option to resume ro restart 
 from the lose screen youll have access to the setting men uwhere yo ucan pick between 6 backgrounds or let it stay randomized 
-randomizes:
-<img width="1079" height="616" alt="image" src="https://github.com/user-attachments/assets/39aa5469-9da6-4f4a-adc3-1cf17d820b45" />
+randomizes.
 one example background:
+<img width="1079" height="616" alt="image" src="https://github.com/user-attachments/assets/39aa5469-9da6-4f4a-adc3-1cf17d820b45" />
+
 
 
 the game chooses betweem 6 bg and 7 backgroumd songs 

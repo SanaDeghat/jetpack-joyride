@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cj0348y8j8yt1" path="res://background/deathScreen/6.png" id="14_gk4b0"]
 [ext_resource type="Texture2D" uid="uid://ddnwlimreu4d1" path="res://background/deathScreen/7.png" id="15_20l77"]
 [ext_resource type="PackedScene" uid="uid://bre4jpedgx3i1" path="res://transitioner.tscn" id="18_tkjqq"]
+[ext_resource type="Texture2D" uid="uid://bd1ra1qjwnrdp" path="res://background/deathScreen/16.png" id="19_ol57q"]
+[ext_resource type="PackedScene" uid="uid://cs3tuaio53cqj" path="res://settings.tscn" id="20_pboiy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ol57q"]
 
@@ -96,6 +98,7 @@ offset_right = 591.0
 offset_bottom = 298.0
 theme = SubResource("Theme_1tmu8")
 text = "Restart"
+metadata/_edit_use_anchors_ = true
 
 [node name="3" type="Sprite2D" parent="." unique_id=1289068297]
 position = Vector2(1343.5715, -5)
@@ -110,27 +113,28 @@ offset_bottom = 212.18207
 rotation = -0.06632251
 theme = SubResource("Theme_1tmu8")
 text = "Main Menu"
+metadata/_edit_use_anchors_ = true
 
 [node name="4" type="Sprite2D" parent="." unique_id=1398292267]
 position = Vector2(-3303.1191, -12.690462)
 scale = Vector2(0.95854044, 0.9365775)
 texture = ExtResource("12_amy8k")
 
-[node name="highscore" type="Label" parent="4" unique_id=1310871912]
-offset_left = -370.0
-offset_top = 264.0
-offset_right = -287.0
-offset_bottom = 296.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("14_417ne")
-theme_override_font_sizes/font_size = 31
-text = "0"
-
 [node name="score" type="Label" parent="4" unique_id=284399691]
 offset_left = -453.0
 offset_top = 217.0
 offset_right = -367.0
 offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_417ne")
+theme_override_font_sizes/font_size = 31
+text = "0"
+
+[node name="highscore" type="Label" parent="4" unique_id=1310871912]
+offset_left = -371.32367
+offset_top = 263.7007
+offset_right = -192.48041
+offset_bottom = 295.7007
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_417ne")
 theme_override_font_sizes/font_size = 31
@@ -152,5 +156,26 @@ texture = ExtResource("15_20l77")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=662267817]
 
+[node name="16" type="Sprite2D" parent="." unique_id=982468873]
+position = Vector2(793.3334, -3.8095284)
+texture = ExtResource("19_ol57q")
+
+[node name="Button" type="Button" parent="16" unique_id=130838766]
+offset_left = 276.1906
+offset_top = 12.380965
+offset_right = 593.57263
+offset_bottom = 107.34063
+rotation = -0.06632251
+theme = SubResource("Theme_1tmu8")
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" parent="." unique_id=1990544660 instance=ExtResource("20_pboiy")]
+layer = 11
+offset = Vector2(100.85, 100.36)
+scale = Vector2(0.84, 0.84)
+transform = Transform2D(0.84, 0, 0, 0.84, 100.85, 100.36)
+
 [connection signal="pressed" from="2/Button" to="." method="_on_Restart_button_pressed"]
 [connection signal="pressed" from="3/Button" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="pressed" from="16/Button" to="." method="_on_button_pressed"]

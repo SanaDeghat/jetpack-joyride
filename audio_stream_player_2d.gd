@@ -8,7 +8,7 @@ func _ready() -> void:
 		global.played_before=true
 		playing=true
 	else:
-		stream=load("res://music/gameMusic"+str(randi_range(1,8))+".mp3")
+		stream=load("res://music/gameMusic"+str(randi_range(1,7))+".mp3")
 		playing=true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

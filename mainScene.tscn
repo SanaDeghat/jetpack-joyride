@@ -273,7 +273,6 @@ script = ExtResource("1_61od6")
 
 [node name="backgrounds" type="Node2D" parent="." unique_id=1567918184]
 script = ExtResource("2_us837")
-bgNum = 3
 
 [node name="Parallax2D2" type="Parallax2D" parent="backgrounds" unique_id=1688307776]
 
@@ -420,7 +419,6 @@ viecle_powerup = ExtResource("7_0pyiw")
 
 [node name="onsticleTimer" type="Timer" parent="obsticle_spawner" unique_id=1315491226]
 wait_time = 1.2
-autostart = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1518095123]
 z_index = 1

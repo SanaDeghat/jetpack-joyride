@@ -19,6 +19,7 @@ extends Node2D
 @onready var sea_texture_offscreenx: TextureRect = $"../Parallax2D/TextureRectOffscreenx"
 @onready var sea_texture_offscreeny: TextureRect = $"../Parallax2D/TextureRectOffscreeny"
 @onready var sea_texture_offscreenxy: TextureRect = $"../Parallax2D/TextureRectOffscreenxy"
+@onready var wing_particles: CPUParticles2D = $"../CharacterBody2D/CPUParticles2D"
 
 
 
@@ -28,7 +29,6 @@ extends Node2D
 @onready var parallax_2d: Parallax2D = $Parallax2D
 @onready var parallax_2d_3: Parallax2D = $Parallax2D3
 @onready var character_body_2d: CharacterBody2D = $"../CharacterBody2D"
-@export var bgNum: int;
 @onready var parallax_2d_4: Parallax2D = $Parallax2D4
 var SEA_SPLASH_COLORS = {
 	1: Color.html("#556597"),
@@ -38,30 +38,42 @@ var SEA_SPLASH_COLORS = {
 	5: Color.html("#5386BB"),
 	6: Color.html("#63848F"),
 }
+var WING_PARTOICLE_COLORS = {
+	1: Color.html("#FF9502"),
+	2: Color.html("#FFB700"),
+	3: Color.html("#FFCF40"),
+	4: Color.html("#FF7D00"),
+	5: Color.html("#FFB700"),
+	6: Color.html("#FEBF00"),
+}
 
+var background= global.background
 func _ready() -> void:
-	if bgNum==0:
-		bgNum = randi_range(1,6)
+	print(background)
+	if global.background==0:
+		background = randi_range(1,6)
 	if sea_splash:
-		sea_splash.color = SEA_SPLASH_COLORS.get(bgNum, Color.WHITE)
-	if bgNum==3:
+		sea_splash.color = SEA_SPLASH_COLORS.get(background, Color.WHITE)
+	if wing_particles:
+		wing_particles.color = WING_PARTOICLE_COLORS.get(background, Color.WHITE)
+	if background==3:
 		
 		character_body_2d.color=1
-	background_texture.texture= load("res://background/"+str(bgNum)+"/1.png")
+	background_texture.texture= load("res://background/"+str(background)+"/1.png")
 	background_offscreenx_texture.texture=background_texture.texture
 	background_offscreeny_texture.texture=background_texture.texture
 	background_offscreenxy_texture.texture=background_texture.texture
 	
 	
-	layer_two_background_texture.texture= load("res://background/"+str(bgNum)+"/2.png")
-	layer_three_background_texture.texture= load("res://background/"+str(bgNum)+"/3.png")
-	layer_four_background_texture.texture= load("res://background/"+str(bgNum)+"/4.png")
-	if bgNum==6:
-		layer_five_background_texture.texture= load("res://background/"+str(bgNum)+"/5.png")
+	layer_two_background_texture.texture= load("res://background/"+str(background)+"/2.png")
+	layer_three_background_texture.texture= load("res://background/"+str(background)+"/3.png")
+	layer_four_background_texture.texture= load("res://background/"+str(background)+"/4.png")
+	if background==6:
+		layer_five_background_texture.texture= load("res://background/"+str(background)+"/5.png")
 	else:
 		layer_five_background_texture.texture=null;
 			
-	sea_texture.texture= load("res://background/"+str(bgNum)+"/sea.png")
+	sea_texture.texture= load("res://background/"+str(background)+"/sea.png")
 	sea_texture_offscreenx.texture=sea_texture.texture
 	sea_texture_offscreeny.texture=sea_texture.texture
 	sea_texture_offscreenxy.texture=sea_texture.texture

@@ -122,7 +122,7 @@ func onResetMusic() -> void:
 	t.set_trans(Tween.TRANS_SINE)
 	t.set_ease(Tween.EASE_IN_OUT)
 
-	bgmusic.stream=load("res://music/gameMusic3.mp3")
+	bgmusic.stream=load("res://music/gameMusic9.mp3")
 	bgmusic.play()
 	bgmusic.set_meta("fade_tween", t)
 	# -80 dB is effectively silent.

@@ -1,0 +1,34 @@
+[gd_resource type="Theme" format=3 uid="uid://3cog416yc6q1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xc12c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1di5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0lvki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3a5k"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xc12c"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g1di5"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0lvki"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_f3a5k"]
+color = Color(0.99607843, 0.7490196, 0.015686275, 1)
+grow_end = 2.0
+thickness = 14
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ryf7t"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_xc12c")
+Button/styles/hover = SubResource("StyleBoxEmpty_g1di5")
+Button/styles/normal = SubResource("StyleBoxEmpty_0lvki")
+Button/styles/pressed = SubResource("StyleBoxEmpty_f3a5k")
+HSlider/icons/grabber = SubResource("PlaceholderTexture2D_xc12c")
+HSlider/icons/grabber_disabled = SubResource("PlaceholderTexture2D_g1di5")
+HSlider/icons/grabber_highlight = SubResource("PlaceholderTexture2D_0lvki")
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_f3a5k")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_f3a5k")
+HSlider/styles/slider = SubResource("StyleBoxEmpty_ryf7t")
